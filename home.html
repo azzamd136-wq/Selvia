@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Untuk Selvia ❤️</title>
+  <link rel="stylesheet" href="home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- hati melayang di background -->
+  <div class="hearts-bg" id="heartsContainer"></div>
+
+  <div class="container">
+
+    <h1>Hai Selvia 💖</h1>
+    <p class="subtitle">Ini khusus buat kamu 💕</p>
+
+    <img src="foto.png" alt="Selvia" class="photo">
+
+    <div class="divider"></div>
+
+    <!-- PESAN PANJANG -->
+    <div class="message-box">
+      <p>
+        Terima kasih sudah hadir di hidup aku.
+        Kamu itu bukan cuma spesial, tapi juga alasan aku semangat setiap hari. 💕
+      </p>
+      <p>
+        Semoga kita selalu bareng ya, lewatin semuanya sama-sama. ❤️
+      </p>
+      <p>
+        Tulis pesan panjang kamu di sini sepuasnya...
+        Bisa banyak paragraf, cerita, atau apapun yang mau kamu sampaikan buat Selvia. 🌸
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3 CARD FOTO -->
+    <p class="section-title">Momen kita 💕</p>
+    <div class="photo-cards">
+
+      <div class="card">
+        <img src="foto1.jpg" alt="Foto 1">
+        <div class="card-caption">Caption foto 1 ✨</div>
+      </div>
+
+      <div class="card">
+        <img src="foto2.jpg" alt="Foto 2">
+        <div class="card-caption">Caption foto 2 💕</div>
+      </div>
+
+      <div class="card">
+        <img src="foto3.jpg" alt="Foto 3">
+        <div class="card-caption">Caption foto 3 🌸</div>
+      </div>
+
+    </div>
+
+    <p class="footer">- Dari aku 💌</p>
+
+  </div>
+
+  <audio autoplay loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // hati melayang otomatis
+    const emojis = ['💖', '💗', '💓', '💞', '🌸', '💕', '❤️', '🩷'];
+    const container = document.getElementById('heartsContainer');
+
+    function buatHati() {
+      const el = document.createElement('div');
+      el.classList.add('heart');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (12 + Math.random() * 16) + 'px';
+      const dur = 6 + Math.random() * 8;
+      el.style.animationDuration = dur + 's';
+      el.style.animationDelay = (Math.random() * 3) + 's';
+      container.appendChild(el);
+      setTimeout(() => el.remove(), (dur + 3) * 1000);
+    }
+
+    setInterval(buatHati, 700);
+  </script>
+
+</body>
+</html>

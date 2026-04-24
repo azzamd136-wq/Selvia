@@ -1,0 +1,134 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #ffe0ec, #fff5f8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 500;
+  color: #c2185b;
+}
+
+.sub {
+  font-size: 1em;
+  color: #e91e8c;
+}
+
+.hint {
+  font-size: 13px;
+  color: #e91e8c;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ===== AMPLOP ===== */
+.env-outer {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.env-body {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 300px;
+  height: 170px;
+  background: #f06292;
+  border-radius: 4px 4px 14px 14px;
+  border: 2px solid #c2185b;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.env-body::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 105px 150px;
+  border-color: transparent transparent #e91e8c transparent;
+}
+
+.env-body::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 150px 105px 0;
+  border-color: transparent #e91e8c transparent transparent;
+}
+
+.env-flap {
+  position: absolute;
+  top: 0; left: 0;
+  width: 300px;
+  height: 100px;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+  z-index: 3;
+  overflow: hidden;
+}
+
+.env-flap-shape {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 100px 150px 0 150px;
+  border-color: #ec407a transparent transparent transparent;
+}
+
+.seal {
+  position: absolute;
+  top: 20px; left: 50%;
+  transform: translateX(-50%);
+  width: 36px; height: 36px;
+  z-index: 4;
+  transition: opacity 0.2s;
+}
+
+.hearts {
+  position: absolute;
+  top: 18px; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.h-sm { opacity: 0.35; }
+
+/* State terbuka */
+.env-outer.open .env-flap {
+  transform: rotateX(-180deg);
+}
+
+.env-outer.open .seal {
+  opacity: 0;
+}
